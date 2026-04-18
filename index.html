@@ -12,17 +12,19 @@
             align-items: center;
             min-height: 100vh;
             background-color: #07213a; 
-
+            /* penis */
+            background-image: url('https://i.ibb.co/KQMKFtH/oneko.gif');
             background-repeat: repeat;
         }
 
         .chat-box {
             background: black;
             width: 800px;
-            max-width: 90vw;
-          
+            max-width: 95vw;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
             z-index: 1;
+            border-radius: 8px; 
+            overflow: hidden;
         }
 
         iframe {
@@ -31,16 +33,17 @@
             display: block;
             border: none;
         }
-
-
     </style>
 </head>
-<body background="https://i.ibb.co/KQMKFtH/oneko.gif">
-  
-  <div class="chat-box">
-   <iframe src="https://chat.addachat.com/?bgs=off&bg=transparent&pfx=main&name=Guest&room=main&sidebar=on&format=on&images=on" height="600" width="90%" frameBorder="0" allowtransparency="true" allow="camera; microphone"></iframe>
-  </div>
+<body>
 
+    <div class="chat-box">
+        <iframe 
+            src="https://chat.addachat.com/?bgs=off&bg=transparent&pfx=main&name=Guest&room=main&sidebar=on&format=on&images=on" 
+            allowtransparency="true" 
+            allow="camera; microphone">
+        </iframe>
+    </div>
 
 </body>
 </html>

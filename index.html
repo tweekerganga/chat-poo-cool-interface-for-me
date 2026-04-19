@@ -12,8 +12,6 @@
             --text-color: rgb(0, 151, 78);
             --accent-border: #1a3a5a;
             --code-text: #dfb707;
-            
-            --carpet-color: rgba(0, 0, 0, 0.6);
             --carpet-padding: 30px;
         }
 
@@ -31,7 +29,7 @@
         .carpet {
             margin: 40px 0;
             width: min(calc(var(--container-width) + var(--carpet-padding) * 2), 98vw);
-            background: var(--carpet-color);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(8px);
             padding: var(--carpet-padding);
             border-radius: 80px;
@@ -40,7 +38,6 @@
             align-items: center;
             gap: 20px;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            transition: all 0.3s ease-in-out;
         }
 
         .web-stuff-box {
@@ -65,7 +62,6 @@
             background: black;
             box-shadow: 0 0 20px rgba(91, 8, 3, 0.5);
             border-radius: 4px;
-            overflow: hidden;
         }
 
         iframe, .chat-box img {

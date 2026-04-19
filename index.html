@@ -6,101 +6,106 @@
     <title>Multi-Chat Room</title>
     <style>
         :root {
-    --container-width: 1500px;
-    --bg-color: #091219;
-    --box-bg: #10182d;
-    --text-color: rgb(0, 151, 78);
-    --accent-border: #1a3a5a;
-    --code-text: #dfb707;
-    
-    --carpet-color: rgba(0, 0, 0, 0.6);
-    --carpet-padding: 30px;
-}
+            --container-width: 1500px;
+            --bg-color: #091219;
+            --box-bg: #10182d;
+            --text-color: rgb(0, 151, 78);
+            --accent-border: #1a3a5a;
+            --code-text: #dfb707;
+            
+            --carpet-color: rgba(0, 0, 0, 0.6);
+            --carpet-padding: 30px;
+        }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: var(--bg-color) url('https://i.ibb.co/KQMKFtH/oneko.gif') repeat fixed;
-    font-family: sans-serif;
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg-color) url('https://i.ibb.co/KQMKFtH/oneko.gif') repeat fixed;
+            font-family: sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
 
-.carpet {
-    margin: 40px 0;
-    width: min(calc(var(--container-width) + var(--carpet-padding) * 2), 98vw);
-    background: var(--carpet-color);
-    backdrop-filter: blur(8px);
-    padding: var(--carpet-padding);
-    border-radius: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    transition: all 0.3s ease-in-out;
-}
+        .carpet {
+            margin: 40px 0;
+            width: min(calc(var(--container-width) + var(--carpet-padding) * 2), 98vw);
+            background: var(--carpet-color);
+            backdrop-filter: blur(8px);
+            padding: var(--carpet-padding);
+            border-radius: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            transition: all 0.3s ease-in-out;
+        }
 
-.web-stuff-box {
-    width: min(var(--container-width), 100%);
-    background: var(--box-bg);
-    border-radius: 8px;
-    border: 1px solid var(--accent-border);
-}
+        .web-stuff-box {
+            width: min(var(--container-width), 100%);
+            background: var(--box-bg);
+            border-radius: 8px;
+            border: 1px solid var(--accent-border);
+        }
 
-summary {
-    padding: 15px;
-    cursor: pointer;
-    font-weight: bold;
-    user-select: none;
-}
+        summary {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+        }
 
-summary:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
+        summary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
 
-.chat-box {
-    background: black;
-    box-shadow: 0 0 20px rgba(91, 8, 3, 0.5);
-    border-radius: 4px;
-    overflow: hidden;
-}
+        .chat-box {
+            background: black;
+            box-shadow: 0 0 20px rgba(91, 8, 3, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+        }
 
-iframe {
-    width: 100%;
-    height: 500px;
-    border: none;
-}
+        iframe, .chat-box img {
+            width: 100%;
+            height: 500px;
+            border: none;
+            display: block;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-}
+        .chat-box img {
+            object-fit: contain;
+        }
 
-th, td {
-    border: 1px solid #333;
-    padding: 12px;
-    text-align: left;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
 
-th {
-    background: var(--accent-border);
-}
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
 
-tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.05);
-}
+        th {
+            background: var(--accent-border);
+        }
 
-code {
-    background: #222;
-    padding: 2px 5px;
-    color: var(--code-text);
-    border-radius: 3px;
-    font-weight: bold;
-}
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        code {
+            background: #222;
+            padding: 2px 5px;
+            color: var(--code-text);
+            border-radius: 3px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -148,14 +153,15 @@ code {
             </div>
         </details> 
 
-                <details class="web-stuff-box">
+        <details class="web-stuff-box">
             <summary title="CLICK TO SEE NUN">cummin soon</summary>
             <div style="padding: 10px;">
                 <div class="chat-box">
-                    <iframe src="https://i.ibb.co/RpMrwmPr/lazereyecat.png"></iframe>
+                    <img src="https://i.ibb.co/RpMrwmPr/lazereyecat.png" alt="laser eye cat">
                 </div>
             </div>
         </details> 
 
-    </div> </body>
+    </div>
+</body>
 </html>

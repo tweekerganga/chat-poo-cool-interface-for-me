@@ -5,204 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Chat Room</title>
     <style>
-        /* --- CUSTOMIZE YOUR COLORS HERE --- */
         :root {
-            --bg-color: #07213a;          
-            --box-bg: rgba(0, 0, 0, 0.85); 
-            --text-color: white;           
-            --accent-border: #1a3a5a;     
-            --summary-hover: rgba(255, 255, 255, 0.1); 
-            --table-header: #1a3a5a;      
-            --code-text: #00ff00;         
-            --box-shadow: rgba(0,0,0,0.5);
-        }
+    --container-width: 1500px;
+    --bg-color: #091219;
+    --box-bg: #10182d;
+    --text-color: rgb(0, 151, 78);
+    --accent-border: #1a3a5a;
+    --code-text: #dfb707;
+    
+    --carpet-color: rgba(0, 0, 0, 0.6);
+    --carpet-padding: 30px;
+}
 
-        body {
-            margin: 0;
-            display: flex;
-            flex-direction: column; 
-            align-items: center; 
-            gap: 20px; 
-            padding: 40px 20px;
-            min-height: 100vh;
-            background-color: var(--bg-color); 
-            background-image: url('https://i.ibb.co/KQMKFtH/oneko.gif');
-            background-repeat: repeat;
-            font-family: sans-serif;
-            color: var(--text-color);
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg-color) url('https://i.ibb.co/KQMKFtH/oneko.gif') repeat fixed;
+    font-family: sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 
-        .web-stuff-box {
-            width: 800px;
-            max-width: 95vw;
-            background: var(--box-bg);
-            color: var(--text-color);
-            border-radius: 8px;
-            border: 1px solid var(--accent-border);
-            margin-bottom: 10px;
-        }
+.carpet {
+    margin: 40px 0;
+    width: min(calc(var(--container-width) + var(--carpet-padding) * 2), 98vw);
+    background: var(--carpet-color);
+    backdrop-filter: blur(8px);
+    padding: var(--carpet-padding);
+    border-radius: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    transition: all 0.3s ease-in-out;
+}
 
-        summary {
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            outline: none;
-            user-select: none;
-        }
+.web-stuff-box {
+    width: min(var(--container-width), 100%);
+    background: var(--box-bg);
+    border-radius: 8px;
+    border: 1px solid var(--accent-border);
+}
 
-        summary:hover {
-            background: var(--summary-hover);
-        }
+summary {
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
 
-        .chat-box {
-            background: black;
-            width: 100%; 
-            box-shadow: 0 0 20px var(--box-shadow);
-            border-radius: 4px;
-            overflow: hidden;
-        }
+summary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
 
-        iframe {
-            width: 100%;
-            height: 500px;
-            display: block;
-            border: none;
-        }
+.chat-box {
+    background: black;
+    box-shadow: 0 0 20px rgba(91, 8, 3, 0.5);
+    border-radius: 4px;
+    overflow: hidden;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            color: var(--text-color);
-            font-size: 13px;
-        }
+iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
 
-        th, td {
-            border: 1px solid #333;
-            padding: 12px;
-            text-align: left;
-            vertical-align: top;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
 
-        th {
-            background: var(--table-header);
-        }
+th, td {
+    border: 1px solid #333;
+    padding: 12px;
+    text-align: left;
+}
 
-        tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.05);
-        }
+th {
+    background: var(--accent-border);
+}
 
-        code {
-            background: #222;
-            padding: 2px 5px;
-            color: var(--code-text);
-            border-radius: 3px;
-            white-space: nowrap;
-            font-weight: bold;
-        }
+tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+code {
+    background: #222;
+    padding: 2px 5px;
+    color: var(--code-text);
+    border-radius: 3px;
+    font-weight: bold;
+}
     </style>
 </head>
 <body>
 
-    <details class="web-stuff-box">
-        <summary title="CLICK TO SEE CHAT">POO DOT COM</summary>
-        <div style="padding: 10px;">
-            <div class="chat-box">
-                <iframe src="https://chat.addachat.com/?bgs=off&bg=transparent&pfx=main&name=Guest&room=main&sidebar=on&format=on&images=on" allowtransparency="true" allow="camera; microphone"></iframe>
-            </div>
-        </div>
-    </details> 
+    <div class="carpet">
 
-    <details class="web-stuff-box">
-        <summary title="IRC">IRC Client!</summary>
-        <div style="padding: 10px;">
-            <div class="chat-box">
-                <iframe id="IRC" src="https://web.libera.chat/?channels=#yourchannel" allow="clipboard-write"></iframe>
-            </div>
-
-            <details class="web-stuff-box" style="margin-top: 15px; width: 100%;">
-                <summary title="CLICK TO SEE COMMANDS">📜 Standard IRC Commands</summary>
-                <div style="padding: 10px;">
-                    <table>
-                      <tr>
-                        <th>Action</th>
-                        <th>Description</th>
-                        <th>Command</th>
-                      </tr>
-                      <tr>
-                        <td><b>Join</b></td>
-                        <td>Enter a specific channel.</td>
-                        <td><code>/join #channel</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Part</b></td>
-                        <td>Exit the channel. Optional message shown to others.</td>
-                        <td><code>/part [#channel] [message]</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Nick</b></td>
-                        <td>Changes your nickname to a new one.</td>
-                        <td><code>/nick nickname</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Message</b></td>
-                        <td>Send a private message without opening a window.</td>
-                        <td><code>/msg nickname message</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Query</b></td>
-                        <td>Open a private conversation window.</td>
-                        <td><code>/query nickname [message]</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Emote</b></td>
-                        <td>Perform an action in text (e.g. * Nickname waves).</td>
-                        <td><code>/me action</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Quit</b></td>
-                        <td>Disconnect from the whole network.</td>
-                        <td><code>/quit [message]</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Ignore</b></td>
-                        <td>Stop seeing messages from a specific user.</td>
-                        <td><code>/ignore nickname</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Unignore</b></td>
-                        <td>See messages from a user again.</td>
-                        <td><code>/unignore nickname</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>List Ignores</b></td>
-                        <td>Show everyone you currently have muted.</td>
-                        <td><code>/ignores</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Whois</b></td>
-                        <td>Get information about a user (Idle time, etc).</td>
-                        <td><code>/whois nickname</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Topic</b></td>
-                        <td>Check or change the current room's topic.</td>
-                        <td><code>/topic [#channel] [newtopic]</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Invite</b></td>
-                        <td>Ask a user to join you in a channel.</td>
-                        <td><code>/invite nickname #channel</code></td>
-                      </tr>
-                      <tr>
-                        <td><b>Away</b></td>
-                        <td>Mark yourself as currently unavailable.</td>
-                        <td><code>/away [reason]</code></td>
-                      </tr>
-                    </table>
+        <details class="web-stuff-box">
+            <summary title="CLICK TO SEE CHAT">POO DOT COM</summary>
+            <div style="padding: 10px;">
+                <div class="chat-box">
+                    <iframe src="https://chat.addachat.com/?bgs=off&bg=transparent&pfx=main&name=Guest&room=main&sidebar=on&format=on&images=on" allowtransparency="true" allow="camera; microphone"></iframe>
                 </div>
-            </details> 
-        </div>
-    </details> 
+            </div>
+        </details> 
 
-</body>
+        <details class="web-stuff-box">
+            <summary title="IRC">IRC Client!</summary>
+            <div style="padding: 10px;">
+                <div class="chat-box">
+                    <iframe src="https://web.libera.chat/" allow="clipboard-write"></iframe>
+                </div>
+
+                <details class="web-stuff-box" style="margin-top: 30px; width: 100%; border: none; background: transparent;">
+                    <summary title="CLICK TO SEE COMMANDS">IRC Commands</summary>
+                    <div style="padding: 10px;">
+                        <table>
+                          <tr><th>Action</th><th>Description</th><th>Command</th></tr>
+                          <tr><td><b>Join</b></td><td>Enter a specific channel.</td><td><code>/join #channel</code></td></tr>
+                          <tr><td><b>Part</b></td><td>Exit the channel.</td><td><code>/part [#channel] [msg]</code></td></tr>
+                          <tr><td><b>Nick</b></td><td>Changes your nickname.</td><td><code>/nick name</code></td></tr>
+                          <tr><td><b>Message</b></td><td>Send private message.</td><td><code>/msg nick msg</code></td></tr>
+                          <tr><td><b>Query</b></td><td>Open private window.</td><td><code>/query nick [msg]</code></td></tr>
+                          <tr><td><b>Emote</b></td><td>Action text.</td><td><code>/me action</code></td></tr>
+                          <tr><td><b>Quit</b></td><td>Disconnect.</td><td><code>/quit [msg]</code></td></tr>
+                          <tr><td><b>Ignore</b></td><td>Mute a user.</td><td><code>/ignore nick</code></td></tr>
+                          <tr><td><b>Unignore</b></td><td>Unmute a user.</td><td><code>/unignore nick</code></td></tr>
+                          <tr><td><b>List Ignores</b></td><td>See mutes.</td><td><code>/ignores</code></td></tr>
+                          <tr><td><b>Whois</b></td><td>User info.</td><td><code>/whois nick</code></td></tr>
+                          <tr><td><b>Topic</b></td><td>Room topic.</td><td><code>/topic [#chan] [top]</code></td></tr>
+                          <tr><td><b>Invite</b></td><td>Invite user.</td><td><code>/invite nick #chan</code></td></tr>
+                          <tr><td><b>Away</b></td><td>Set away status.</td><td><code>/away [reason]</code></td></tr>
+                        </table>
+                    </div>
+                </details> 
+            </div>
+        </details> 
+
+                <details class="web-stuff-box">
+            <summary title="CLICK TO SEE NUN">cummin soon</summary>
+            <div style="padding: 10px;">
+                <div class="chat-box">
+                    <iframe src=""></iframe>
+                </div>
+            </div>
+        </details> 
+
+    </div> </body>
 </html>

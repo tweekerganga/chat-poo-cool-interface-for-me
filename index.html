@@ -104,18 +104,63 @@
         }
 
         .chat-box {
-    background: #1a1a2e;  /* your background color */
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;  /* vertical breathing room */
-}
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
 
-canvas {
-    width: 400px;
-    height: 400px;
-    background: #000;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);  /* glow effect */
-}
+        canvas {
+            width: 400px;
+            height: 400px;
+            background: #000;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+        }
+
+        /* ===== SNAKE GAME LAYOUT ===== */
+        .snake-wrapper {
+            display: flex;
+            flex-direction: row;      /* side by side on desktop */
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .snake-sidebar {
+            flex: 0 0 250px;          /* fixed width sidebar */
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--accent-border);
+            border-radius: 8px;
+            padding: 15px;
+            color: var(--text-color);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .snake-sidebar h3 {
+            margin-top: 0;
+            color: var(--code-text);
+            border-bottom: 1px solid var(--accent-border);
+            padding-bottom: 8px;
+        }
+
+        /* Mobile: stack vertically, sidebar on top */
+        @media (max-width: 768px) {
+            .snake-wrapper {
+                flex-direction: column;
+            }
+
+            .snake-sidebar {
+                flex: 1 1 auto;       /* full width */
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            canvas {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -163,19 +208,31 @@ canvas {
             </div>
         </details> 
 
+       
         <details class="web-stuff-box">
             <summary title="CLICK TO PLAY">Snake Game</summary>
             <div style="padding: 10px;">
-                <div class="chat-box">
-                    <canvas width="400" height="400" id="game"></canvas>
+                <div class="snake-wrapper">
+                   
+                    <div class="snake-sidebar">
+                        <h3>SNAKE THE GAME WOW!</h3>
+                        <p> &larr;  &#x2191;  &#x2192;  &#x2193; keys to move.</p>
+                        <p>thanks this guy for making it!</p>
+                        <p><a href="https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4" target="_blank" title="SNAKE GAME GUY GITHUB REPO ">SNAKE GAME ORIGINAL GITHUB REPO </a></p>
+                        
+                        <p>Score: <span id="score">0</span></p>
+                    </div>
+                    <div class="chat-box">
+                        <canvas width="400" height="400" id="game"></canvas>
+                    </div>
                 </div>
             </div>
         </details>
+
         <script>
-
-
             var canvas = document.getElementById('game');
             var context = canvas.getContext('2d');
+            var scoreEl = document.getElementById('score');
 
             var grid = 16;
             var count = 0;
@@ -242,6 +299,7 @@ canvas {
                         snake.maxCells++;
                         apple.x = getRandomInt(0, 25) * grid;
                         apple.y = getRandomInt(0, 25) * grid;
+                        if (scoreEl) scoreEl.textContent = snake.maxCells - 4;
                     }
 
                     for (var i = index + 1; i < snake.cells.length; i++) {
@@ -254,6 +312,7 @@ canvas {
                             snake.dy = 0;
                             apple.x = getRandomInt(0, 25) * grid;
                             apple.y = getRandomInt(0, 25) * grid;
+                            if (scoreEl) scoreEl.textContent = 0;
                         }
                     }
                 });
@@ -282,7 +341,7 @@ canvas {
         </script>
 
         <details class="web-stuff-box">
-            <summary title="CLICK TO SEE NUN">cummin soon</summary>
+            <summary title="CLICK TO SEE NUN">commmmin soon</summary>
             <div style="padding: 10px;">
                 <div class="chat-box">
                     <img src="https://i.ibb.co/RpMrwmPr/lazereyecat.png" alt="laser eye cat">
